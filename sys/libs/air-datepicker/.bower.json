@@ -1,0 +1,15 @@
+{
+  "name": "air-datepicker",
+  "homepage": "https://github.com/t1m0n/air-datepicker",
+  "version": "3.1.0",
+  "_release": "3.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.1.0",
+    "commit": "32235662d42d620cc2c39fe722b569fb47963356"
+  },
+  "_source": "https://github.com/t1m0n/air-datepicker.git",
+  "_target": "^3.1.0",
+  "_originalSource": "air-datepicker",
+  "_direct": true
+}

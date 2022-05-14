@@ -1,0 +1,3533 @@
+@import fonts
+@import vars
+@import reset
+@import grid
+
+@import ../../components/btn/btn
+@import ../../components/input/input
+@import ../../components/textarea/textarea
+
+// TYPOGRAPHY 
+.h1
+  font-size: 57px
+  font-weight: 600
+  line-height: 72px
+
+.h2
+  font-size: 44px
+  font-weight: 600
+  line-height: 47px
+
+.h3
+  font-size: 33px
+  font-weight: 600
+  line-height: 35px
+
+.h4
+  font-size: 30px
+  font-weight: 600
+  line-height: 31px
+
+// ANIMATION
+.fadePage
+  animation-name: fadePage
+  animation-duration: 1.5s
+  transition: .3s
+
+@keyframes fadePage
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+.fadeIn
+  opacity: 0
+  transition: opacity 1.5s
+  &.--loaded
+    opacity: 1
+
+.fadeInTitle
+  opacity: 0
+  transform: translateY(50px)
+  &.--loaded
+    opacity: 1
+    transition: 1.25s
+    transition-property: opacity, transform
+    transition-timing-function: cubic-bezier(.19,1,.22,1)
+    transform: none
+
+// COMMON ELEMENTS
+.inner
+  display: flex
+  flex-direction: column
+  overflow: hidden
+  min-height: 100%
+
+.overflow-disable
+  overflow: hidden
+
+.bgw
+  z-index: 1
+  position: relative
+
+.bg
+  z-index: -1
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: center
+
+.logo
+  width: 100%
+  max-width: 90px
+
+.nav
+  width: 100%
+  max-width: 940px
+  ul
+    justify-content: space-between
+    .subnav
+      z-index: 5
+      position: absolute
+      top: 49px
+      left: 5px
+      transition: .3s
+      background: #fff
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1)
+      overflow: hidden
+      flex-direction: column
+      transition-delay: 0s
+      padding: 10px 0 16px 0
+      min-width: 237px
+      width: max-content
+      opacity: 0
+      visibility: hidden
+      li
+        padding: 4px 24px 4px 20px
+        transition: .3s
+        cursor: pointer
+        &:before, &:after
+          display: none
+        &:hover
+          background: $gray
+          a
+            color: $purple
+        a
+          font-size: 14px
+          line-height: 17px
+          color: $cMain
+    li
+      transition: .3s
+      position: relative
+      cursor: pointer
+      &:before, &:after
+        content: ""
+        position: absolute
+      &:before
+        width: 100%
+        height: 45px
+        top: 0
+        background: transparent
+      &:after
+        left: 0
+        bottom: -10px
+        width: 100%
+        height: 1px
+        background: $purple
+        transition: .3s
+        visibility: hidden
+        opacity: 0
+      &:hover
+        .subnav
+          opacity: 1
+          visibility: visible
+          transition-delay: .2s
+        &:after
+          bottom: -3px
+          opacity: 1
+          visibility: visible
+      a
+        font-size: 17px
+        line-height: 21px
+        position: relative
+        z-index: 5
+
+.breadcrumbs
+  z-index: 4
+  color: $purple
+  background: $gray
+  padding: 12px 0
+  margin-bottom: 46px
+  position: relative
+  &__list
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+  &__item
+    font-size: 13px
+    line-height: 16px
+    margin-right: 35px
+    position: relative
+    &:after
+      content: "/"
+      position: absolute
+      right: -20px
+    &:last-of-type
+      margin-right: 0
+      &:after
+        display: none
+  &__link
+    color: $purple
+    &:hover
+      color: $yellow
+
+.pagination
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  margin-top: 66px
+  &__arrow
+    background: $gray
+    min-width: 52px
+    min-height: 34px
+    display: flex
+    align-items: center
+    justify-content: center
+    &:hover
+      background: $purple
+      svg
+        path
+          stroke: #fff
+  &__list
+    display: flex
+    flex-wrap: wrap
+    margin: 0 15px
+  &__link
+    font-size: 14px
+    line-height: 17px
+    background: $gray
+    padding: 8px 7px 9px 7px
+    margin-right: 15px
+    min-width: 52px
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    &:last-of-type
+      margin-right: 0
+    &:hover
+      color: #fff
+      background: $purple
+    &.--current
+      color: #fff
+      background: $purple
+      cursor: default
+
+.page-padding
+  padding-bottom: 140px
+
+.page-md
+  width: 100%
+  max-width: 856px
+
+.datepicker
+  display: flex
+  flex-wrap: wrap
+  &__input
+    background: #fff
+    border: 1px solid #E9E9E9
+    width: 252px
+    height: 52px
+    display: flex
+    align-items: center
+    margin-right: 10px
+    &:last-of-type
+      margin-right: 0
+  &__btn
+    font-size: 16px
+    max-width: 92px
+    margin-left: 10px
+
+.air-datepicker
+  border: 1px solid #E9E9E9
+  border-radius: 0
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1)
+  width: 252px
+  font-family: $ffMain
+  font-size: 15px
+
+.air-datepicker--pointer
+  display: none
+
+.air-datepicker-body--day-name
+  color: $purple
+  font-weight: 600
+
+.air-datepicker-cell.-current-
+  color: $yellow
+
+.air-datepicker-cell.-selected-, .air-datepicker-cell.-selected-.-focus-
+  background: $purple
+
+// ANIMATION
+.fadeIn
+  opacity: 0
+  &.--loaded
+    opacity: 1
+    transition: opacity 1.5s
+
+// MAIN PAGE
+.intro
+  color: #fff
+  background: $purple
+  padding-top: 63px
+  padding-bottom: 80px
+  &__info
+    width: 100%
+    max-width: 548px
+    margin-right: auto
+  &__title
+    margin-bottom: 15px
+  &__text
+    font-size: 18px
+    line-height: 26px
+    margin-bottom: 40px
+  &__btn
+    max-width: 198px
+  &__preview
+    width: 100%
+    height: 308px
+    max-width: 541px
+    margin-left: auto
+    margin-right: 73px
+    clip-path: path('M.69 255.849h31.423a43.68 43.68 0 0 1 30.878 12.79 43.669 43.669 0 0 1 12.79 30.879v8.915H44.376a43.67 43.67 0 0 1-43.67-43.668v-8.916H.69ZM114.281 308.433H82.863v-8.915a43.67 43.67 0 0 1 43.668-43.658h31.418v8.905a43.666 43.666 0 0 1-43.668 43.668ZM.69 196.042h31.424a43.66 43.66 0 0 1 30.878 12.79 43.67 43.67 0 0 1 12.79 30.878v8.916H44.375A43.667 43.667 0 0 1 .706 204.957v-8.915H.69ZM114.28 248.631H82.862v-8.915a43.67 43.67 0 0 1 43.669-43.669h31.418v8.91a43.669 43.669 0 0 1-43.669 43.669v.005ZM.69 136.251h31.424a43.66 43.66 0 0 1 30.878 12.79 43.668 43.668 0 0 1 12.79 30.878v8.904H44.375A43.666 43.666 0 0 1 .707 145.155v-8.904H.69ZM114.28 188.824H82.862v-8.916a43.668 43.668 0 0 1 43.669-43.668h31.418v8.91a43.669 43.669 0 0 1-43.669 43.674ZM.69 76.427h31.423a43.67 43.67 0 0 1 43.669 43.668v8.916H44.375A43.671 43.671 0 0 1 .69 85.321v-8.894ZM114.281 129.016H82.863v-8.915a43.673 43.673 0 0 1 26.957-40.345 43.673 43.673 0 0 1 16.712-3.324h31.418v8.91a43.686 43.686 0 0 1-12.789 30.882 43.666 43.666 0 0 1-30.88 12.792ZM97.699 61.953 79.331 86.049 60.963 61.953a30.937 30.937 0 0 1 0-37.54L79.332.315 97.7 24.412a30.946 30.946 0 0 1 0 37.54ZM192.715 255.849h31.423a43.676 43.676 0 0 1 30.879 12.79 43.676 43.676 0 0 1 12.79 30.879v8.915H236.4a43.671 43.671 0 0 1-43.669-43.668v-8.916h-.016ZM306.306 308.433h-31.418v-8.915a43.67 43.67 0 0 1 43.669-43.658h31.418v8.905a43.666 43.666 0 0 1-43.669 43.668ZM192.715 196.042h31.424a43.66 43.66 0 0 1 30.878 12.79 43.66 43.66 0 0 1 12.79 30.878v8.916H236.4a43.666 43.666 0 0 1-43.668-43.669v-8.915h-.017ZM306.305 248.631h-31.418v-8.915a43.672 43.672 0 0 1 12.79-30.879 43.672 43.672 0 0 1 30.879-12.79h31.418v8.91a43.669 43.669 0 0 1-43.669 43.669v.005ZM192.715 136.251h31.424a43.66 43.66 0 0 1 30.878 12.79 43.66 43.66 0 0 1 12.791 30.878v8.904H236.4a43.666 43.666 0 0 1-43.668-43.668v-8.904h-.017ZM306.306 188.824h-31.418v-8.916a43.666 43.666 0 0 1 43.668-43.668h31.418v8.91a43.669 43.669 0 0 1-43.668 43.674ZM192.715 76.427h31.423a43.671 43.671 0 0 1 40.345 26.957 43.66 43.66 0 0 1 3.324 16.711v8.916H236.4a43.667 43.667 0 0 1-40.366-26.969 43.67 43.67 0 0 1-3.319-16.722v-8.893ZM306.306 129.016h-31.418v-8.915a43.679 43.679 0 0 1 26.958-40.345 43.665 43.665 0 0 1 16.711-3.324h31.418v8.91a43.648 43.648 0 0 1-3.323 16.713 43.655 43.655 0 0 1-23.633 23.637 43.67 43.67 0 0 1-16.713 3.324ZM289.724 61.953l-18.368 24.096-18.367-24.096a30.935 30.935 0 0 1 0-37.54L271.356.315l18.368 24.096a30.946 30.946 0 0 1 0 37.54ZM384.74 255.849h31.423a43.685 43.685 0 0 1 30.879 12.79 43.676 43.676 0 0 1 12.79 30.879v8.915h-31.407a43.671 43.671 0 0 1-43.669-43.668v-8.916h-.016ZM498.331 308.433h-31.418v-8.915a43.67 43.67 0 0 1 43.669-43.658H542v8.905a43.67 43.67 0 0 1-43.669 43.668ZM384.74 196.042h31.424a43.66 43.66 0 0 1 30.878 12.79 43.66 43.66 0 0 1 12.79 30.878v8.916h-31.407a43.666 43.666 0 0 1-43.668-43.669v-8.915h-.017ZM498.33 248.631h-31.418v-8.915a43.672 43.672 0 0 1 12.79-30.879 43.672 43.672 0 0 1 30.879-12.79h31.418v8.91a43.672 43.672 0 0 1-12.79 30.879 43.672 43.672 0 0 1-30.879 12.79v.005ZM384.74 136.251h31.424a43.657 43.657 0 0 1 30.878 12.79 43.679 43.679 0 0 1 12.791 30.878v8.904h-31.407a43.668 43.668 0 0 1-43.669-43.668v-8.904h-.017ZM498.331 188.824h-31.418v-8.916a43.666 43.666 0 0 1 43.668-43.668h31.418v8.91a43.669 43.669 0 0 1-43.668 43.674ZM384.74 76.427h31.424a43.67 43.67 0 0 1 43.668 43.668v8.916h-31.407a43.667 43.667 0 0 1-40.366-26.969 43.67 43.67 0 0 1-3.319-16.722v-8.893ZM498.331 129.016h-31.418v-8.915a43.679 43.679 0 0 1 26.958-40.345 43.665 43.665 0 0 1 16.711-3.324H542v8.91a43.648 43.648 0 0 1-3.323 16.713 43.655 43.655 0 0 1-23.633 23.637 43.67 43.67 0 0 1-16.713 3.324ZM481.749 61.953l-18.367 24.096-18.368-24.096a30.934 30.934 0 0 1 0-37.54L463.382.315l18.367 24.096a30.947 30.947 0 0 1 0 37.54Z')
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+.desc
+  padding-top: 82px
+  padding-bottom: 95px
+  &__text
+    font-size: 20px
+    line-height: 30px
+    p
+      margin-bottom: 30px
+      &:last-of-type
+        margin-bottom: 0
+
+.sections
+  width: 100%
+  max-width: 1440px
+  margin-left: auto
+  margin-right: auto
+  &__item
+    overflow: hidden
+    color: $purple
+    width: calc( 100% / 3 )
+    padding: 46px 55px 62px 55px
+    min-height: 641px
+    display: flex
+    align-items: flex-start
+    flex-direction: column
+    position: relative
+    background: $gray
+    &.--white
+      color: #fff
+    &.--map
+      .sections
+        &__bg
+          // width: 480px
+          // height: 640px
+          width: 607px
+          height: 543px
+          top: 50%
+          left: 50%
+          right: auto
+          bottom: auto
+          margin-left: 104px
+          margin-top: -50px
+          transform: translate(-50%, -50%)
+          img
+            object-position: left
+
+      &:before
+        z-index: 0
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 133px
+        background: linear-gradient(180deg, #F3F2FC 41.3%, rgba(243, 242, 252, 0) 100%)
+  &__title
+    z-index: 1
+    margin-bottom: 30px
+    position: relative
+  &__btn
+    width: auto
+    margin-top: auto
+  &__docs
+    width: 100%
+    &-item
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      padding: 27px 0
+      border-top: 2px solid #E4E2F3
+      &:last-of-type
+        border-bottom: 2px solid #E4E2F3
+      &:hover
+        color: $yellow
+    &-icon
+      width: 36px
+    &-name
+      width: calc( 100% - 36px )
+      font-size: 18px
+      line-height: 18px
+      padding-left: 22px
+
+.offices
+  &__item
+    z-index: 10
+    cursor: pointer
+    transition: .3s
+    position: absolute
+    left: 50%
+    transform: translate(-50%, -50%)
+
+    &:before, &:after
+      z-index: 5
+      content: ""
+      position: absolute
+      border-radius: 50%
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      transition: .3s
+    &:before
+      width: 13px
+      height: 13px
+      background: $purple
+    &:after
+      width: 33px
+      height: 33px
+      border: 1px solid $purple
+
+    &:hover
+      &:after
+        width: 47px
+        height: 47px
+
+    &.--current
+      cursor: default
+      .offices
+        &__info
+          opacity: 1
+          visibility: visible
+      &:after
+        width: 47px
+        height: 47px
+
+    &:nth-of-type(1)
+      top: 307px
+      margin-left: -32px
+      &.--current
+        .offices
+          &__info
+            top: -190px
+            right: -200px
+            &:before
+              left: -53px
+              top: 64px
+    &:nth-of-type(2)
+      top: 377px
+      margin-left: 77px
+      &.--current
+        .offices
+          &__info
+            right: -150px
+            &:before
+              left: -3px
+    &:nth-of-type(3)
+      top: 426px
+      margin-left: 14px
+    &:nth-of-type(4)
+      top: 469px
+      margin-left: 50px
+    &:nth-of-type(5)
+      top: 488px
+      margin-left: -3px
+  &__info
+    z-index: 1
+    color: #fff
+    background: $purple
+    border-radius: 6px
+    padding: 8px 18px 18px 18px
+    transition: .3s
+    opacity: 0
+    visibility: hidden
+    position: absolute
+    top: -220px
+    right: -182px
+    pointer-events: none
+    width: max-content
+    &:before
+      content: ""
+      position: absolute
+      top: 94px
+      left: -33px
+      width: 100%
+      height: 124px
+      background: url('../../sys/imgs/line.svg') no-repeat
+    &-city
+      font-size: 20px
+      line-height: 30px
+    &-address
+      font-size: 12px
+      line-height: 15px
+
+.partners
+  color: #fff
+  background: $purple
+  padding-top: 62px
+  padding-bottom: 65px
+  &__wrap
+    align-items: center
+  &__title
+    width: 100%
+    max-width: 143px
+    margin-right: auto
+  &__list
+    margin-right: 56px
+    margin-bottom: -20px
+    align-items: center
+    justify-content: space-between
+    width: calc( 100% - 143px - 56px - 77px)
+  &__item
+    font-size: 18px
+    line-height: 18px
+    margin-bottom: 20px
+    margin-right: 20px
+    &:last-of-type
+      margin-right: 0
+
+.news
+  &__datepicker
+    margin-bottom: 65px
+  &__inner
+    max-width: 1258px
+  &__list
+    margin-left: -31px
+    margin-right: -31px
+    margin-bottom: -93px
+  &__item
+    width: calc( 100% / 4 - 62px )
+    margin-left: 31px
+    margin-right: 31px
+    margin-bottom: 93px
+    .n-item
+      &__img
+        height: 125px
+    &.--w2
+      width: 100%
+      max-width: 528px
+      margin-right: auto
+      .n-item
+        &__img
+          height: 318px
+  &__pagination
+    margin-top: 80px
+
+.news-main
+  padding-top: 55px
+  padding-bottom: 86px
+  &__title
+    color: $purple
+    margin-bottom: 62px
+  &__wrap
+    width: 100%
+    max-width: 1210px
+  &__list
+    margin-left: -55.5px
+    margin-right: -55.5px
+  &__item
+    width: calc( 100% / 3 - 111px )
+    margin-left: 55.5px
+    margin-right: 55.5px
+    .n-item
+      &__img
+        height: 131px
+
+.n-item
+  &__img
+    transition: .3s
+    overflow: hidden
+    margin-bottom: 20px
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      object-position: center
+      transition: .3s
+  &__date
+    font-size: 14px
+    line-height: 17px
+    padding-left: 30px
+    margin-bottom: 16px
+    position: relative
+    &:before
+      content: ""
+      position: absolute
+      top: 50%
+      left: 0
+      width: 18px
+      height: 18px
+      transform: translateY(-50%)
+      background: url('../../sys/imgs/calendar.svg') no-repeat center
+      background-size: cover
+  &__name
+    font-size: 20px
+    line-height: 25px
+    transition: .3s
+
+  &:hover
+    .n-item
+      &__img
+        img
+          transform: scale(1.05)
+      &__name
+        color: $purple
+
+  &.--lg
+    .n-item
+      &__img
+        margin-bottom: 29px
+      &__date
+        font-size: 18px
+        line-height: 23px
+        padding-left: 34px
+        margin-bottom: 12px
+        &:before
+          width: 22px
+          height: 22px
+      &__name
+        font-size: 27px
+        line-height: 34px
+
+.news-item
+  padding-right: 110px
+  &__btn
+    font-size: 14px
+    line-height: 17px
+    padding: 4px
+    flex-flow: row-reverse
+    max-width: 143px
+    margin-bottom: 25px
+    margin-top: -13px
+    img
+      top: 0
+      width: 9px
+      transform: scale(-1, 1)
+      margin-left: 0
+      margin-right: 10px
+    &:hover
+      img
+        transform: scale(-1, 1) translateX(5px)
+  &__img
+    height: 262px
+    margin-bottom: 56px
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+  &__date
+    font-size: 18px
+    line-height: 22px
+    padding-left: 34px
+    position: relative
+    &:before
+      content: ""
+      position: absolute
+      top: 50%
+      left: 0
+      width: 22px
+      height: 22px
+      transform: translateY(-50%)
+      background: url('../../sys/imgs/calendar.svg') no-repeat
+      background-size: contain
+  &__text
+    margin-top: 23px
+    h3
+      display: block
+      font-size: 30px
+      font-weight: 600
+      line-height: 36px
+      margin-bottom: 25px
+    p
+      line-height: 26px
+      margin-bottom: 22px
+      &:last-of-type
+        margin-bottom: 0
+    i
+      display: block
+      margin-bottom: 25px
+  &__tags
+    margin-top: 30px
+    margin-bottom: 75px
+  &__tag
+    display: inline-block
+    color: $purple
+    background: $gray
+    padding: 4px 16px
+    font-size: 14px
+    font-weight: 500
+    line-height: 18px
+    margin-right: 10px
+    margin-bottom: 10px
+    &:last-of-type
+      margin-right: 0
+    &:hover
+      color: $yellow
+  &__actions
+    background: $gray
+    padding: 24px 30px
+  &__action
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    margin-right: 28px
+    cursor: pointer
+    transition: .3s
+    &:last-of-type
+      margin-right: 0
+    &.--purple
+      color: $purple
+  &__icon
+    width: 18px
+    margin-right: 10px
+  &__desc
+    font-size: 14px
+    font-weight: 500
+    line-height: 18px
+
+.links
+  color: $purple
+  background: $gray
+  padding-top: 62px
+  padding-bottom: 65px
+  &__wrap
+    align-items: center
+  &__title
+    width: 100%
+    max-width: 143px
+    margin-right: auto
+  &__list
+    margin-right: 32px
+    margin-bottom: -20px
+    align-items: center
+    justify-content: space-between
+    width: calc( 100% - 143px - 32px - 77px)
+  &__item
+    font-size: 18px
+    font-weight: 500
+    line-height: 18px
+    margin-bottom: 20px
+    margin-right: 20px
+    a
+      color: $purple
+    &:hover
+      a
+        color: $yellow
+    &:last-of-type
+      margin-right: 0
+
+// ABOUT
+.about
+  padding-right: 110px
+  &__img
+    height: 190px
+    margin-bottom: 42px
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+  &__text
+    font-size: 17px
+    line-height: 25px
+    p
+      margin-bottom: 30px
+      &:last-of-type
+        margin-bottom: 0
+
+// TEAM
+.team
+  padding-right: 26px
+  &__dir
+    display: flex
+    flex-wrap: wrap
+    margin-bottom: 80px
+    &-img
+      width: 283px
+    &-info
+      width: 526px
+      margin-top: 50px
+      margin-left: 47px
+    &-name
+      color: $purple
+      margin-bottom: 10px
+    &-duty
+      font-size: 20px
+      line-height: 26px
+      margin-bottom: 28px
+    &-text
+      line-height: 25px
+  &__staff
+    display: flex
+    flex-wrap: wrap
+    margin-left: -20px
+    margin-right: -20px
+    margin-bottom: -54px
+    &-item
+      width: calc( 100% / 4 - 40px)
+      margin-left: 20px
+      margin-right: 20px
+      margin-bottom: 54px
+    &-img
+      height: 248px
+      margin-bottom: 22px
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+    &-name
+      color: $purple
+      font-size: 20px
+      font-weight: 600
+      line-height: 25px
+      margin-bottom: 18px
+    &-duty
+      font-size: 13px
+      line-height: 17px
+
+// DOCS
+.docs-about
+  padding-right: 110px
+
+.docs-main
+  &__item
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    width: 100%
+    padding: 23px 0
+    border-top: 2px solid #E4E2F3
+    &:last-of-type
+      border-bottom: 2px solid #E4E2F3
+    &:hover
+      .docs-main
+        &__name
+          color: $yellow
+  &__info
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    width: 100%
+    max-width: calc( 100% - 100px)
+    margin-right: auto
+  &__icon
+    width: 36px
+    margin-right: 22px
+  &__name
+    width: calc( 100% - 36px - 100px )
+    color: $purple
+    font-size: 18px
+    font-weight: 500
+    line-height: 18px
+    transition: .3s
+  &__actions
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    max-width: 100px
+    margin-left: auto
+  &__size
+    color: $purple
+    font-size: 15px
+    font-weight: 500
+    line-height: 15px
+
+// ACT
+.act
+  &__img
+    height: 190px
+    margin-bottom: 42px
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+  &__text
+    font-size: 17px
+    line-height: 26px
+    p
+      margin-bottom: 26px
+      &:last-of-type
+        margin-bottom: 0
+    blockquote
+      color: $purple
+      font-weight: 500
+      padding-left: 30px
+      margin-bottom: 30px
+      position: relative
+      &:before
+        content: ""
+        position: absolute
+        width: 8px
+        height: 100%
+        background: $purple
+        top: 0
+        left: 0
+    a
+      color: $purple
+      border-bottom: 1px solid $purple
+      &:hover
+        border-color: transparent
+
+// CORR
+.corr
+  padding-right: 110px
+  &__desc
+    font-size: 17px
+    line-height: 26px
+    margin-bottom: 84px
+  &__list
+    margin-left: -19px
+    margin-right: -19px
+    margin-bottom: 58px
+  &__item
+    min-height: 260px
+    width: calc( 100% / 3 - 38px )
+    margin-left: 19px
+    margin-right: 19px
+    background: $gray
+    padding: 30px 17px 10px 30px
+    display: flex
+    flex-direction: column
+    &-text
+      font-size: 13px
+      line-height: 20px
+      margin-bottom: 18px
+    &-detail
+      font-size: 15px
+      font-weight: 600
+      line-height: 23px
+    &-icon
+      margin-top: auto
+      margin-left: auto
+      margin-right: -10px
+  &__text
+    font-size: 17px
+    line-height: 26px
+    p
+      margin-bottom: 28px
+      &:last-of-type
+        margin-bottom: 0
+
+// PRICE
+.price
+  margin-bottom: -32px
+  &__area
+    z-index: 1
+    cursor: pointer
+    position: absolute
+    transition: .3s
+    background: #615E9B
+    &:hover, &.--current
+      path
+        fill: $yellow
+        stroke: $yellow
+    .price
+      &__info
+        display: none
+  &__scheme
+    svg
+      path
+        fill: $purple
+  &__inner
+    z-index: 10
+    position: absolute
+    top: 96px
+    left: 670px
+    opacity: 0
+    visibility: hidden
+    transition: .3s
+    &.--show
+      opacity: 1
+      visibility: visible
+    .price
+      &__scheme
+        display: none
+  &__info
+    min-width: 287px
+    background: #fff
+    padding: 25px 0 20px 0
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.12)
+  &__name
+    font-size: 18px
+    font-weight: 600
+    line-height: 17px
+    padding: 0 30px
+    margin-bottom: 17px
+  &__list
+    display: flex
+    flex-direction: column
+  &__link
+    font-size: 12px
+    font-weight: 500
+    line-height: 16px
+    color: $purple
+    text-transform: uppercase
+    padding: 10px 30px
+    &:hover
+      background: $gray
+  &__map
+    z-index: -1
+    width: 2274px
+    margin-top: -493px
+    margin-left: -2px
+    // margin-bottom: -500px
+    position: relative
+    img
+      width: 100%
+    // margin-top: -48px
+    // position: relative
+
+.price-item
+  &__info
+    align-items: flex-start
+    margin-bottom: 50px
+  &__btn
+    font-size: 22px
+    padding: 5px
+    max-width: 171px
+  &__desc
+    font-size: 17px
+    line-height: 22px
+    width: calc( 100% - 171px )
+    padding-left: 50px
+    p
+      margin-bottom: 22px
+      &:last-of-type
+        margin-bottom: 0
+  &__ps
+    color: #A3A3A3
+    font-size: 14px
+    line-height: 21px
+    margin-bottom: 14px
+
+.p-table
+  table
+    border-spacing: 0
+    border-collapse: collapse
+  thead
+    td
+      min-width: 230px
+      color: $purple
+      font-size: 18px
+      font-weight: 600
+      background: #F8F8F9
+      line-height: 23px
+      border: 1px solid #DEDEDE
+      padding: 8px 20px
+  tbody
+    td
+      background: #fff
+      border: 1px solid #DEDEDE
+      padding: 22px 18px
+
+// RULES
+.r-title
+  color: $purple
+  font-size: 18px
+  font-weight: 600
+  line-height: 22px
+  margin-bottom: 24px
+
+.r-text
+  font-size: 15px
+  line-height: 21px
+  p
+    margin-bottom: 20px
+    &:last-of-type
+      margin-bottom: 0
+
+.rules
+  &__elems
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    margin-bottom: 35px
+  &__col
+    width: calc( 50% - 12px )
+  &__elem
+    margin-bottom: 48px
+    &-title
+      color: $purple
+      font-size: 18px
+      font-weight: 600
+      line-height: 23px
+      margin-bottom: 28px
+    &-list
+      ol
+        flex-direction: column
+        align-items: flex-start
+        li
+          font-size: 15px
+          line-height: 19px
+          padding-left: 50px
+          position: relative
+          margin-bottom: 30px
+          &:last-of-type
+            margin-bottom: 0
+          .li-counter
+            color: #fff
+            font-size: 20px
+            font-weight: 700
+            position: relative
+            background: $purple
+            width: 32px
+            height: 32px
+            display: flex
+            align-items: center
+            justify-content: center
+            text-align: center
+            border-radius: 50%
+            position: absolute
+            left: 0
+            top: 50%
+            transform: translateY(-50%)
+      p
+        font-size: 15px
+        line-height: 21px
+        margin-top: 24px
+      a
+        border-bottom: 1px solid transparent
+
+    &.--w1
+      width: 100%
+      .rules
+        &__elem
+          &-list
+            margin-bottom: -20px
+            ol
+              flex-direction: row
+              align-items: center
+              justify-content: space-between
+              li
+                width: calc( 50% - 12px )
+                position: relative
+                &:nth-of-type(1)
+                  order: 1
+                &:nth-of-type(2)
+                  order: 3
+                  margin-top: -70px
+                &:nth-of-type(3)
+                  order: 5
+                  margin-top: -70px
+                &:nth-of-type(4)
+                  order: 7
+                  margin-top: -20px
+                &:nth-of-type(5)
+                  order: 2
+                &:nth-of-type(6)
+                  order: 4
+                &:nth-of-type(7)
+                  order: 6
+                &:nth-of-type(8)
+                  order: 8
+                &:last-of-type
+                  margin-bottom: 30px
+
+    &.--yellow
+      .rules
+        &__elem
+          &-title
+            color: $yellow
+          &-list
+            ol
+              li
+                .li-counter
+                  background: $yellow
+    &.--blue
+      .rules
+        &__elem
+          &-title
+            color: $blue
+          &-list
+            ol
+              li
+                .li-counter
+                  background: $blue
+            a
+              color: $blue
+              &:hover
+                border-color: $blue
+
+  &__video
+    background: $gray
+    padding: 50px 50px 60px 57px
+    margin-bottom: 70px
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    &-info
+      max-width: 362px
+    &-preview
+      height: 215px
+      position: relative
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+      &:hover
+        .rules
+          &__video
+            &-play
+              &:before
+                transform: translate(-50%, -50%) scale(.90)
+    &-play
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      &:before
+        z-index: -1
+        content: ""
+        position: absolute
+        width: 48px
+        height: 48px
+        background: $yellow
+        border-radius: 4px
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        transition: .3s
+  &__ps
+    background: $gray
+    padding: 50px 57px 65px 57px
+    margin-bottom: 70px
+  &__docs
+    margin-bottom: 70px
+    margin-top: -20px
+
+.r-docs
+  &__title
+    color: $purple
+    font-size: 21px
+    font-weight: 600
+    line-height: 26px
+    margin-bottom: 30px
+
+.r-contacts
+  &__title
+    color: $purple
+    font-size: 21px
+    font-weight: 600
+    line-height: 26px
+    margin-bottom: 30px
+  &__list
+    justify-content: space-between
+  &__item
+    min-height: 212px
+    width: calc( 50% - 12px )
+    background: $gray
+    position: relative
+    padding: 32px 30px
+    font-size: 20px
+    line-height: 30px
+  &__info
+    max-width: 280px
+  &__name
+    font-weight: 600
+    margin-bottom: 14px
+  &__mail
+    a
+      color: $purple
+  &__icons
+    display: flex
+    flex-wrap: wrap
+    position: absolute
+    top: 50%
+    right: 5px
+    transform: translateY(-50%)
+    img
+      width: 60px
+      height: 60px
+      margin-right: 20px
+      &:last-of-type
+        margin-right: 0
+
+// RESULT
+.result
+  &__main
+    padding-right: 24px
+  &__elem
+    margin-bottom: 43px
+    &:last-of-type
+      margin-bottom: 0
+    &-title
+      color: $purple
+      margin-bottom: 17px
+    &-datepicker
+      margin-bottom: 30px
+    &-list
+      display: flex
+      flex-wrap: wrap
+      margin-left: -12px
+      margin-right: -12px
+    &-item
+      min-height: 306px
+      width: calc( 100% / 3 - 24px )
+      margin-left: 12px
+      margin-right: 12px
+      display: flex
+      flex-direction: column
+      justify-content: flex-end
+      border: 1px solid #E9E9E9
+      padding: 38px 30px 70px 30px
+      &.--arrow-show
+        .result
+          &__elem
+            &-value
+              padding-left: 28px
+      &.--yellow
+        .result
+          &__elem
+            &-value
+              color: $yellow
+    &-info
+      margin-top: auto
+    &-name
+      font-size: 17px
+      line-height: 21px
+      margin-bottom: 8px
+    &-value
+      color: $purple
+      font-size: 37px
+      font-weight: 600
+      line-height: 40px
+      position: relative
+      img
+        position: absolute
+        top: 50%
+        left: 0
+        margin-top: 3px
+        transform: translateY(-50%)
+      &.--down
+        img
+          transform: translateY(-50%) rotate(180deg)
+
+    &-desc
+      font-size: 20px
+      line-height: 24px
+      margin-bottom: 28px
+      span
+        white-space: nowrap
+    &-total
+      white-space: nowrap
+      margin-bottom: 10px
+      span
+        color: #fff
+        font-size: 21px
+        font-family: 'Manrope'
+        font-weight: 800
+        line-height: 23px
+        display: inline-block
+        position: relative
+        margin-right: 7px
+        &:nth-of-type(3n+3)
+          margin-right: 13px
+        &:before
+          z-index: -1
+          content: ""
+          position: absolute
+          width: 16px
+          height: 26px
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          background: url('../../sys/imgs/bg-count.svg') no-repeat
+
+// SIDEPAGE
+.sidepage
+  &__wrap
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+  &__main
+    width: calc( 100% - 306px )
+    padding-right: 24px
+  &__head
+    z-index: 1
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    position: relative
+    &:before
+      z-index: 0
+      content: ""
+      position: absolute
+      left: 0
+      top: -46px
+      width: 1000%
+      height: 126px
+      background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 50%)
+  &__title
+    color: $purple
+    margin-bottom: 40px
+    &.--no-margin
+      margin-bottom: 0
+  &__title-note
+    margin-top: 7px
+    line-height: 21px
+    padding-left: 30px
+    margin-left: 52px
+    position: relative
+    &:before
+      content: ""
+      position: absolute
+      width: 18px
+      height: 18px
+      top: 50%
+      left: 0
+      transform: translateY(-50%)
+      background: $purple
+      border-radius: 50%
+  &__desc
+    font-size: 17px
+    line-height: 26px
+    margin-top: -20px
+    margin-bottom: 34px
+
+.sidebar
+  width: 306px
+  margin-left: auto
+  background: $gray
+  padding: 20px 20px 27px 20px
+  &.--plain
+    margin-top: 37px
+    background: none
+    padding: 0
+  &__list
+    display: flex
+    flex-direction: column
+  &__link
+    line-height: 20px
+    margin-bottom: 17px
+    position: relative
+    &:before
+      content: ""
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      left: -20px
+      width: 7px
+      height: calc( 100% + 4px )
+      background: $purple
+      opacity: 0
+      visibility: hidden
+      transition: .3s
+    &:last-of-type
+      margin-bottom: 0
+    &:hover
+      color: $purple
+    &.--current
+      color: $purple
+      cursor: default
+      &:before
+        opacity: 1
+        visibility: visible
+  &__news
+    &-title
+      font-size: 25px
+      font-weight: 600
+      line-height: 32px
+      margin-bottom: 36px
+    &-item
+      display: block
+      margin-bottom: 52px
+      &:last-of-type
+        margin-bottom: 0
+
+// CONTACTS
+.contacts
+  &__wrap
+    margin-bottom: 25px
+    position: relative
+  &__info
+    width: 100%
+    max-width: 525px
+    border: 1px solid #E9E9E9
+    padding: 44px 44px 40px 44px
+    &-item
+      display: flex
+      flex-wrap: wrap
+      margin-bottom: 37px
+      &:last-of-type
+        margin-bottom: 0
+    &-icon
+      width: 24px
+      margin-top: 2px
+      &.--mail
+        margin-top: 5px
+    &-text
+      font-size: 20px
+      line-height: 26px
+      width: calc( 100% - 24px )
+      padding-left: 19px
+      a
+        &[href^="mailto:"]
+          color: $purple
+  &__map
+    width: calc( 100% - 525px - 25px )
+    margin-left: 25px
+  &__main
+    display: flex
+    flex-wrap: wrap
+    margin-left: -12px
+    margin-right: -12px
+    &-item
+      min-height: 120px
+      width: calc( 100% / 4 - 24px )
+      margin-left: 12px
+      margin-right: 12px
+      border: 1px solid #E9E9E9
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      justify-content: center
+      padding: 22px
+    &-icon
+      width: 24px
+    &-info
+      padding-left: 19px
+    &-text
+      font-size: 14px
+      line-height: 18px
+    &-tel
+      font-size: 20px
+      line-height: 25px
+
+.map
+  &__area
+    width: 100%
+    height: 100%
+
+.ymaps-2-1-79-map-copyrights-promo
+  display: none
+
+// MODALS
+.fancybox
+  &__content
+    color: $cMain
+  &__counter
+    display: none
+  &__toolbar
+    display: none
+  &__thumbs
+    display: none
+  &__backdrop
+    background: #E5E5E5
+    opacity: .9
+  &__carousel
+    display: flex
+    flex-wrap: wrap
+    overflow: auto
+    scrollbar-width: none
+    &::-webkit-scrollbar
+      width: 0
+  &__slide
+    padding: 25px
+  &__viewport
+    height: 100%
+
+.popup
+  position: relative
+  display: none
+  padding: 0
+  width: 100%
+  max-width: 626px
+  background: transparent
+  padding: 50px
+  cursor: default !important
+  background: #fff
+  overflow: auto
+  scrollbar: none
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    width: 0
+  .carousel__button
+    top: 25px !important
+    right: 25px !important
+    width: 20px
+    height: 20px
+    opacity: 1
+    outline: none
+    appearance: none
+    border-radius: 0
+    box-shadow: none
+    -webkit-tap-highlight-color: transparent
+    color: transparent !important
+    svg
+      display: none
+    &:before, &:after
+      position: absolute
+      content: ""
+      background: #D0D0D0
+      width: 20px
+      height: 2px
+      transition: .3s
+      -webkit-tap-highlight-color: transparent
+    &:before
+      transform: rotate(45deg)
+    &:after
+      transform: rotate(-45deg)
+    &:hover
+      &:before, &:after
+        background: $purple
+  &__title
+    color: $purple
+    margin-bottom: 37px
+  &__desc
+    font-size: 20px
+    line-height: 27px
+  &__input
+    margin-bottom: 10px
+    border-bottom: 1px solid #D0D0D0
+    &:last-of-type
+      margin-bottom: 0
+  &__textarea
+    border-bottom: 1px solid #D0D0D0
+  &__btn
+    max-width: 243px
+    margin-top: 43px
+
+  &.--thanks
+    min-height: 300px
+    align-items: center
+    justify-content: center
+    text-align: center
+
+// SITEMAP
+.sitemap
+  padding: 140px 0
+  &__title
+    color: $purple
+    margin-bottom: 42px
+  &__list
+    width: calc( 100% / 3 )
+    display: flex
+    flex-direction: column
+  &__link
+    font-size: 20px
+    font-weight: 500
+    line-height: 25px
+    margin-bottom: 15px
+    &:last-of-type
+      margin-bottom: 0
+    &:hover
+      color: $purple
+    &.--process
+      color: $yellow
+
+@media screen and (max-width: 1340px)
+  .nav
+    max-width: 880px
+
+  .intro
+    &__preview
+      margin-right: 40px
+
+  .sections
+    &__item
+      padding: 40px
+
+  .offices
+    &__item
+      &:nth-of-type(2)
+        &.--current
+          .offices
+            &__info
+              right: -120px
+              &:before
+                left: 27px
+      &:nth-of-type(4)
+        &.--current
+          .offices
+            &__info
+              right: -142px
+              &:before
+                left: 7px
+
+  .team
+    &__dir
+      &-info
+        max-width: 470px
+    &__staff
+      margin-left: -10px
+      margin-right: -10px
+      &-item
+        width: calc( 100% / 4 - 20px)
+        margin-left: 10px
+        margin-right: 10px
+
+  .corr
+    padding-right: 46px
+    &__item
+      padding: 30px 17px
+
+  .result
+    &__elem
+      &-list
+        margin-bottom: -24px
+      &-item
+        width: calc( 100% / 2 - 24px )
+        margin-bottom: 24px
+
+  .rules
+    &__video
+      &-info
+        max-width: 295px
+
+  .r-contacts
+    &__info
+      max-width: 230px
+    &__item
+      font-size: 18px
+
+@media screen and (max-width: 1220px)
+  .logo
+    max-width: 85px
+
+  .nav
+    max-width: 730px
+    ul
+      li
+        a
+          font-size: 15px
+          line-height: 20px
+
+  .breadcrumbs
+    margin-bottom: 35px
+
+  .intro
+    &__wrap
+      position: relative
+    &__info
+      max-width: 420px
+    &__preview
+      margin-top: 30px
+      margin-right: 0
+      transform: scale(.85)
+      position: absolute
+      right: -20px
+
+  .sections
+    width: 960px
+    padding-bottom: 55px
+    &__item
+      width: calc( 100% / 2 )
+      &:nth-of-type(3)
+        order: 2
+      &:nth-of-type(2)
+        order: 3
+        width: 100%
+        min-height: 350px
+    &__docs
+      &-name
+        br
+          display: none
+
+  .partners
+    &__list
+      width: calc( 100% - 143px - 60px)
+      margin-right: 0
+    &__item
+      font-size: 16px
+
+  .links
+    &__list
+      width: calc( 100% - 143px - 60px)
+      margin-right: 0
+    &__item
+      font-size: 16px
+
+  .sidepage
+    &__main
+      width: calc( 100% - 270px )
+
+  .sidebar
+    width: 270px
+    &__news
+      &-item
+        margin-bottom: 40px
+
+  .page-padding
+    padding-bottom: 120px
+
+  .about
+    padding-right: 26px
+
+  .team
+    padding-right: 0
+    &__dir
+      flex-direction: column
+      &-info
+        margin-top: 40px
+        margin-left: 0
+    &__staff
+      &-item
+        width: calc( 100% / 3 - 20px)
+      &-name
+        font-size: 19px
+
+  .docs-about
+    padding-right: 26px
+
+  .corr
+    padding-right: 26px
+    &__list
+      margin-left: -15px
+      margin-right: -15px
+      margin-bottom: 20px
+    &__item
+      padding: 30px
+      min-height: 235px
+      width: calc( 100% / 2 - 30px )
+      margin-left: 15px
+      margin-right: 15px
+      margin-bottom: 30px
+      &-detail
+        br
+          display: none
+
+  .price
+    &__inner
+      top: 65px
+      left: 600px
+
+  .rules
+    &__col
+      width: 100%
+      margin-bottom: 40px
+    &__elem
+      &:last-of-type
+        margin-bottom: 0
+      &.--w1
+        .rules
+          &__elem
+            &-list
+              margin-bottom: 0
+              ol
+                flex-direction: column
+                li
+                  order: unset !important
+                  width: 100%
+                  margin-top: 0 !important
+    &__video
+      flex-direction: column
+      align-items: flex-start
+      justify-content: flex-start
+      &-info
+        max-width: 100%
+        margin-bottom: 30px
+      &-preview
+        margin-left: auto
+        margin-right: auto
+        width: 100%
+        height: 230px
+    &__docs
+      margin-top: 0
+
+  .r-docs
+    &__title
+      br
+        display: none
+
+  .r-contacts
+    &__item
+      width: 100%
+      font-size: 20px
+      margin-bottom: 20px
+      &:last-of-type
+        margin-bottom: 0
+    &__icons
+      right: 45px
+    &__info
+      max-width: 380px
+
+  .news
+    &__list
+      margin-right: -20px
+      margin-left: -20px
+      margin-bottom: -70px
+    &__item
+      width: calc( 100% / 4 - 40px )
+      margin-right: 20px
+      margin-left: 20px
+      margin-bottom: 70px
+      &.--w2
+        max-width: 438px
+        .n-item
+          &__img
+            height: 280px
+
+  .news-main
+    &__list
+      margin-right: -40px
+      margin-left: -40px
+    &__item
+      width: calc( 100% / 3 - 80px )
+      margin-right: 40px
+      margin-left: 40px
+
+  .news-item
+    padding-right: 26px
+
+  .n-item
+    &__name
+      font-size: 18px
+      line-height: 22px
+    &.--lg
+      .n-item
+        &__name
+          font-size: 20px
+          line-height: 25px
+
+  .contacts
+    &__map
+      width: calc( 100% - 380px - 24px )
+      margin-left: 24px
+    &__info
+      max-width: 380px
+      padding: 44px 22px
+      &-text
+        font-size: 18px
+        line-height: 24px
+        br
+          display: none
+    &__main
+      margin-bottom: -20px
+      &-item
+        width: calc( 100% / 2 - 24px )
+        margin-bottom: 20px
+        justify-content: flex-start
+
+@media screen and (max-width: 992px)
+  .sitemap
+    padding: 120px 0
+    &__wrap
+      margin-bottom: -30px
+    &__list
+      width: calc( 100% / 2 )
+      margin-bottom: 30px
+    &__link
+      font-size: 19px
+      line-height: 23px
+
+  .h1
+    font-size: 50px
+    line-height: 60px
+
+  .h2
+    font-size: 36px
+    line-height: 44px
+
+  .h3
+    font-size: 28px
+    line-height: 32px
+
+  .page-md
+    max-width: 100%
+
+  .intro
+    &__wrap
+      flex-direction: column
+    &__info
+      max-width: 690px
+    &__preview
+      margin-right: auto
+      position: relative
+      right: 0
+      transform: scale(1)
+
+  .desc
+    padding-top: 75px
+    padding-bottom: 75px
+    &__text
+      font-size: 18px
+      line-height: 24px
+
+  .sections
+    width: 730px
+    &__item
+      width: 100%
+      min-height: 560px
+      &:nth-of-type(2)
+        order: 2
+        min-height: 300px
+      &.--map
+        .sections
+          // &__bg
+          //   top: 0
+          //   right: 0
+          //   left: auto
+          //   transform: none
+    &__docs
+      &-item
+        padding: 20px 0
+
+  .offices
+    &__item
+      &:nth-of-type(1)
+        top: 265px
+      &:nth-of-type(2)
+        top: 335px
+        &.--current
+          .offices
+            &__info
+              right: -170px
+              &:before
+                left: -23px
+      &:nth-of-type(3)
+        top: 384px
+        &.--current
+          .offices
+            &__info
+              right: -184px
+              &:before
+                left: -33px
+      &:nth-of-type(4)
+        top: 426px
+      &:nth-of-type(5)
+        top: 446px
+
+  .partners
+    padding-top: 50px
+    padding-bottom: 50px
+    &__wrap
+      flex-direction: column
+    &__title
+      max-width: 100%
+      margin-bottom: 35px
+    &__list
+      width: 100%
+
+  .news-main
+    padding-bottom: 75px
+    &__title
+      margin-bottom: 35px
+    &__list
+      margin-left: -14px
+      margin-right: -14px
+    &__item
+      width: calc( 100% / 3 - 28px )
+      margin-left: 14px
+      margin-right: 14px
+
+  .links
+    padding-top: 50px
+    padding-bottom: 50px
+    &__wrap
+      flex-direction: column
+    &__title
+      max-width: 100%
+      margin-bottom: 35px
+    &__list
+      width: 100%
+
+  .n-item
+    &__name
+      font-size: 16px
+      line-height: 20px
+
+  .sidepage
+    &__wrap
+      flex-direction: column
+    &__main
+      order: 2
+      width: 100%
+      padding-right: 0
+    &__title
+      margin-bottom: 35px
+    &__title-note
+      margin-left: 35px
+
+  .sidebar
+    margin-left: 0
+    margin-bottom: 30px
+    &.--plain
+      order: 2
+      width: 100%
+    &__news
+      &-list
+        display: flex
+        flex-wrap: wrap
+        margin-left: -20px
+        margin-right: -20px
+        margin-bottom: -40px
+      &-item
+        width: calc( 100% / 2 - 40px )
+        margin-left: 20px
+        margin-right: 20px
+    &__link
+      &:before
+        width: 5px
+
+  .about
+    padding-right: 0
+    &__text
+      font-size: 16px
+      line-height: 23px
+
+  .team
+    &__dir
+      flex-direction: row
+      margin-bottom: 60px
+      &-img
+        width: 260px
+      &-info
+        width: calc( 100% - 260px )
+        padding-left: 30px
+      &-duty
+        font-size: 18px
+        line-height: 24px
+
+  .corr
+    padding-right: 0
+    &__desc
+      font-size: 16px
+      line-height: 23px
+    &__item
+      &-text
+        font-size: 14px
+    &__text
+      font-size: 16px
+      line-height: 23px
+      p
+        margin-bottom: 20px
+
+  .act
+    &__text
+      font-size: 16px
+      line-height: 23px
+      blockquote
+        br
+          display: none
+      p
+        margin-bottom: 20px
+
+  .price
+    margin-bottom: -100px
+    &__inner
+      z-index: 1
+      top: 55px
+      left: 400px
+    &__info
+      padding: 20px 0 15px 0
+    &__map
+      margin-top: -430px
+
+  .price-item
+    &__ps
+      font-size: 13px
+
+  .p-table
+    thead
+      td
+        font-size: 16px
+        line-height: 22px
+        min-width: auto
+        padding: 8px 15px
+    tbody
+      td
+        font-size: 15px
+        padding: 20px 15px
+
+  .docs-about
+    padding-right: 0
+
+  .docs-main
+    &__name
+      font-size: 17px
+
+  .result
+    &__elem
+      &-item
+        padding: 38px 30px
+        min-height: 280px
+
+  .r-contacts
+    &__item
+      font-size: 19px
+
+  .news
+    &__datepicker
+      margin-bottom: 45px
+    &__list
+      margin-left: -12px
+      margin-right: -12px
+      margin-bottom: -50px
+      justify-content: space-between
+    &__item
+      width: calc( 100% / 3 - 24px )
+      margin-left: 12px
+      margin-right: 12px
+      margin-bottom: 50px
+      &.--w2
+        max-width: calc( 50% - 24px )
+        .n-item
+          &__img
+            height: 230px
+
+  .news-item
+    &__img
+      margin-bottom: 45px
+    &__text
+      h3
+        font-size: 28px
+        line-height: 32px
+      p
+        font-size: 15px
+        line-height: 25px
+        margin-bottom: 20px
+    &__tags
+      margin-bottom: 50px
+
+  .n-item
+    &.--lg
+      .n-item
+        &__date
+          font-size: 16px
+          padding-left: 30px
+          &:before
+            width: 20px
+            height: 20px
+        &__name
+          font-size: 18px
+
+  .contacts
+    &__info
+      max-width: 100%
+      margin-bottom: 20px
+      padding: 35px 22px
+      &-item
+        margin-bottom: 30px
+    &__map
+      width: 780px
+      height: 320px
+      margin-left: 0
+
+@media screen and (max-width: 767px)
+  .sitemap
+    &__title
+      margin-bottom: 30px
+    &__wrap
+      justify-content: space-between
+    &__list
+      width: calc( 100% / 2 - 30px)
+    &__link
+      font-size: 17px
+      line-height: 21px
+
+  .h1
+    font-size: 45px
+    line-height: 50px
+
+  .h2
+    font-size: 32px
+    line-height: 42px
+
+  .h3
+    font-size: 25px
+    line-height: 30px
+
+  .h4
+    font-size: 25px
+    line-height: 30px
+
+  .nav
+    ul
+      li
+        &:hover
+          &:before, &:after
+            display: none
+          a
+            color: $yellow
+
+  .breadcrumbs
+    margin-bottom: 25px
+
+  .page-padding
+    padding-bottom: 100px
+
+  .pagination
+    justify-content: center
+    &__link
+      min-width: 45px
+
+  .datepicker
+    &__input
+      width: 212px
+
+  .intro
+    padding-top: 60px
+    padding-bottom: 70px
+    &__text
+      font-size: 16px
+      line-height: 22px
+      margin-bottom: 35px
+    &__preview
+      height: 250px
+      margin-top: 40px
+
+  .desc
+    padding-top: 65px
+    padding-bottom: 65px
+    &__text
+      font-size: 16px
+      line-height: 22px
+      p
+        margin-bottom: 25px
+
+  .sections
+    width: 560px
+    &__title
+      font-size: 30px
+      line-height: 40px
+    &__item
+      padding: 30px
+      min-height: 500px
+      &.--map
+        .sections
+          &__bg
+            display: none
+    &__docs
+      &-item
+        padding: 15px 0
+      &-name
+        font-size: 17px
+
+  .offices
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    &__item
+      width: calc( 100% / 2 - 10px)
+      position: relative
+      top: 0 !important
+      left: 0 !important
+      margin-left: 0 !important
+      margin-bottom: 30px
+      transform: none
+      &:before, &:after
+        display: none
+      &:last-of-type
+        margin-bottom: 0
+    &__info
+      opacity: 1
+      visibility: visible
+      top: 0
+      right: 0 !important
+      position: relative
+      color: $purple
+      background: transparent
+      padding: 0
+      &:before
+        display: none
+
+  .partners
+    padding-top: 40px
+    padding-bottom: 40px
+    &__title
+      margin-bottom: 30px
+    &__list
+      justify-content: space-between
+      margin-bottom: -15px
+    &__item
+      width: calc( 100% / 2 - 20px )
+      margin-right: 0
+      margin-bottom: 15px
+      br
+        display: none
+
+  .links
+    padding-top: 40px
+    padding-bottom: 40px
+    &__title
+      margin-bottom: 30px
+    &__list
+      justify-content: space-between
+      margin-bottom: -15px
+    &__item
+      width: calc( 100% / 2 - 10px )
+      margin-right: 0
+      margin-bottom: 15px
+      br
+        display: none
+
+  .sidepage
+    &__title
+      margin-bottom: 30px
+    &__title-note
+      padding-left: 25px
+      &:before
+        width: 14px
+        height: 14px
+    &__desc
+      font-size: 16px
+      line-height: 24px
+
+  .act
+    &__text
+      blockquote
+        padding-left: 25px
+        &:before
+          width: 5px
+
+  .team
+    &__dir
+      flex-direction: column
+      margin-bottom: 50px
+      &-img
+        width: auto
+      &-info
+        width: 100%
+        padding-left: 0
+        margin-top: 25px
+      &-duty
+        margin-bottom: 20px
+      &-text
+        font-size: 15px
+    &__staff
+      margin-bottom: -40px
+      &-item
+        width: calc( 100% / 2 - 20px)
+        margin-bottom: 40px
+      &-img
+        height: 310px
+        margin-bottom: 15px
+      &-name
+        min-height: 50px
+
+  .corr
+    &__list
+      margin-left: 0
+      margin-right: 0
+    &__item
+      width: 100%
+      max-width: 380px
+      margin-left: auto
+      margin-right: auto
+      &-text
+        font-size: 15px
+      &-detail
+        font-size: 16px
+      &-icon
+        margin-right: 0
+
+  .docs-main
+    &__item
+      padding: 18px 0
+    &__icon
+      width: 32px
+    &__name
+      width: calc( 100% - 32px - 86px )
+      font-size: 16px
+      br
+        display: none
+    &__actions
+      max-width: 86px
+    &__download
+      width: 20px
+
+  .price
+    &__map
+      margin-top: -380px
+      margin-left: -20px
+    &__area
+      margin-left: -20px
+    &__inner
+      left: auto
+      right: 10px
+      top: 80px
+    &__info
+      min-width: 265px
+    &__name
+      font-size: 17px
+      margin-bottom: 10px
+      padding: 0 20px
+    &__link
+      padding: 7px 20px
+
+  .price-item
+    &__info
+      margin-bottom: 40px
+    &__desc
+      font-size: 16px
+      padding-left: 30px
+
+  .p-table
+    thead
+      td
+        font-size: 14px
+        line-height: 20px
+    tbody
+      td
+        font-size: 14px
+        line-height: 20px
+
+  .rules
+    &__elems
+      margin-bottom: 20px
+    &__video
+      padding: 35px
+      margin-bottom: 50px
+      &-title
+        margin-bottom: 20px
+    &__ps
+      padding: 35px
+      margin-bottom: 50px
+    &__docs
+      margin-bottom: 50px
+
+  .r-docs
+    &__title
+      font-size: 20px
+      line-height: 24px
+      margin-bottom: 25px
+
+  .r-text
+    p
+      margin-bottom: 10px
+
+  .r-contacts
+    &__title
+      font-size: 20px
+      line-height: 24px
+      margin-bottom: 25px
+    &__item
+      font-size: 17px
+      line-height: 27px
+      padding: 25px
+      min-height: 170px
+    &__info
+      max-width: 230px
+
+  .result
+    &__elem
+      &-list
+        margin-left: 0
+        margin-right: 0
+        margin-bottom: 0
+      &-item
+        width: 100%
+        min-height: 230px
+        margin-left: 0
+        margin-right: 0
+        padding: 30px
+        justify-content: center
+        &:last-of-type
+          margin-bottom: 0
+      &-total
+        margin-left: 6px
+
+  .news-main
+    &__list
+      margin-left: -10px
+      margin-right: -10px
+      margin-bottom: -20px
+    &__item
+      width: calc( 100% / 2 - 20px )
+      margin-left: 10px
+      margin-right: 10px
+      margin-bottom: 20px
+      .n-item
+        &__img
+          height: 125px
+
+  .news
+    &__list
+      margin-right: -10px
+      margin-left: -10px
+    &__item
+      width: calc( 100% / 2 - 20px )
+      margin-right: 10px
+      margin-left: 10px
+      &.--w2
+        max-width: 100%
+        margin-right: 10px
+
+  .news-item
+    &__btn
+      margin-top: 0
+    &__img
+      height: 220px
+      margin-bottom: 35px
+    &__text
+      h3
+        font-size: 25px
+        line-height: 30px
+        margin-bottom: 20px
+    &__actions
+      padding: 20px
+
+  .n-item
+    &.--lg
+      .n-item
+        &__img
+          margin-bottom: 20px
+        &__name
+          font-size: 17px
+          line-height: 24px
+    &__img
+      margin-bottom: 15px
+    &__date
+      margin-bottom: 10px
+    &__name
+      font-size: 15px
+
+  .contacts
+    &__info
+      padding: 30px 50px 30px 20px
+      &-item
+        margin-bottom: 25px
+      &-text
+        font-size: 16px
+        line-height: 23px
+    &__map
+      width: 550px
+      height: 300px
+    &__main
+      &-item
+        min-height: 100px
+        padding: 20px
+      &-info
+        padding-left: 13px
+      &-tel
+        font-size: 18px
+        line-height: 23px
+
+  .popup
+    max-width: 490px
+    padding: 40px
+
+@media screen and (max-width: 580px)
+  .sitemap
+    padding: 30px 0 50px 0
+    &__list
+      width: 100%
+
+  .h1
+    font-size: 38px
+    line-height: 46px
+
+  .h2
+    font-size: 30px
+    line-height: 40px
+
+  .h3
+    font-size: 20px
+    line-height: 27px
+
+  .h4
+    font-size: 25px
+    line-height: 27px
+
+  .breadcrumbs
+    margin-bottom: 20px
+    &__item
+      margin-right: 25px
+      &:after
+        right: -15px
+
+  .pagination
+    margin-top: 60px
+    &__arrow
+      min-width: 40px
+    &__link
+      min-width: 40px
+      margin-right: 6px
+
+  .page-padding
+    padding-bottom: 70px
+
+  .datepicker
+    justify-content: space-between
+    &__input
+      width: calc( 50% - 5px )
+      margin-right: 0
+    &__btn
+      max-width: 100%
+      margin-left: auto
+      margin-right: auto
+      margin-top: 12px
+      &.--w2
+        max-width: calc( 100% - 190px)
+        margin-left: 10px
+        margin-top: 0
+
+  .air-datepicker
+    &.-bottom-left-
+      margin-left: -2px
+    &.-bottom-right-
+      margin-left: 2px
+
+  .intro
+    padding-top: 50px
+    padding-bottom: 60px
+    &__title
+      margin-bottom: 25px
+    &__text
+      font-size: 15px
+      line-height: 20px
+      margin-bottom: 30px
+    &__btn
+      max-width: 170px
+    &__preview
+      height: 310px
+      max-width: 100%
+      right: -10px
+
+  .desc
+    &__text
+      font-size: 15px
+      line-height: 20px
+
+  .sections
+    width: 390px
+    &__title
+      font-size: 28px
+      line-height: 38px
+      margin-bottom: 25px
+    &__item
+      padding: 20px 20px 30px 20px
+      min-height: auto
+      &:nth-of-type(2)
+        min-height: 250px
+    &__offices
+      margin-bottom: 40px
+    &__btn
+      font-size: 18px
+    &__docs
+      margin-bottom: 40px
+      &-icon
+        width: 30px
+      &-name
+        font-size: 15px
+        padding-left: 18px
+
+  .offices
+    &__item
+      margin-bottom: 20px
+    &__info
+      &-city
+        font-size: 18px
+        line-height: 28px
+
+  .partners
+    &__list
+      margin-bottom: 0
+    &__item
+      font-size: 15px
+      line-height: 19px
+      width: 100%
+      &:last-of-type
+        margin-bottom: 0
+
+  .links
+    &__list
+      margin-bottom: 0
+    &__item
+      font-size: 15px
+      line-height: 19px
+      width: 100%
+      &:last-of-type
+        margin-bottom: 0
+
+  .sidepage
+    &__title
+      margin-bottom: 25px
+    &__title-note
+      display: none
+    &__desc
+      font-size: 15px
+      line-height: 22px
+      margin-top: -10px
+
+  .sidebar
+    width: 100%
+    padding: 18px
+    margin-bottom: 25px
+    &.--plain
+      margin-top: 45px
+    &__link
+      font-size: 15px
+      line-height: 19px
+      &:before
+        left: -18px
+    &__news
+      &-title
+        font-size: 22px
+        line-height: 27px
+        margin-bottom: 25px
+      &-list
+        margin-left: 0
+        margin-right: 0
+        margin-bottom: 0
+      &-item
+        width: 100%
+        margin-left: 0
+        margin-right: 0
+        margin-bottom: 30px
+        &:last-of-type
+          margin-bottom: 0
+
+  .about
+    &__img
+      height: 180px
+      margin-bottom: 30px
+    &__text
+      font-size: 14px
+      line-height: 20px
+      p
+        margin-bottom: 20px
+
+  .corr
+    &__desc
+      margin-bottom: 35px
+    &__text
+      font-size: 14px
+      line-height: 20px
+    &__list
+      margin-bottom: 10px
+    &__item
+      max-width: 100%
+      padding: 20px
+      min-height: 195px
+      margin-bottom: 20px
+      &-text
+        margin-bottom: 10px
+      &-icon
+        height: 60px
+
+  .team
+    &__dir
+      &-img
+        height: 300px
+      &-info
+        margin-top: 20px
+      &-name
+        font-size: 21px
+        margin-bottom: 5px
+      &-duty
+        font-size: 16px
+        line-height: 22px
+        margin-bottom: 15px
+      &-text
+        font-size: 14px
+        line-height: 20px
+    &__staff
+      &-img
+        height: 250px
+      &-name
+        font-size: 16px
+        line-height: 21px
+        min-height: 42px
+        margin-bottom: 8px
+
+  .act
+    &__img
+      height: 180px
+      margin-bottom: 30px
+    &__text
+      font-size: 14px
+      line-height: 20px
+      blockquote
+        margin-bottom: 20px
+        padding-left: 20px
+
+  .docs-main
+    &__icon
+      width: 30px
+      margin-right: 15px
+    &__info
+      width: calc( 100% - 80px)
+    &__name
+      width: calc( 100% - 30px - 15px )
+      font-size: 14px
+    &__actions
+      max-width: 80px
+    &__size
+      font-size: 14px
+    &__download
+      width: 18px
+
+  .rules
+    &__elems
+      margin-bottom: 0
+    &__elem
+      margin-bottom: 40px
+      &-title
+        font-size: 16px
+        line-height: 21px
+        margin-bottom: 20px
+      &-list
+        ol
+          li
+            font-size: 14px
+            line-height: 20px
+            padding-left: 45px
+            margin-bottom: 20px
+            .li-counter
+              width: 30px
+              height: 30px
+              font-size: 18px
+        p
+          font-size: 14px
+          line-height: 20px
+          margin-top: 20px
+    &__video
+      padding: 20px
+      &-preview
+        height: 190px
+    &__ps
+      padding: 20px
+    &__docs
+      margin-top: 20px
+
+  .r-title
+    font-size: 16px
+    line-height: 21px
+
+  .r-text
+    font-size: 14px
+    line-height: 20px
+
+  .r-docs
+    &__title
+      font-size: 18px
+      line-height: 22px
+
+  .r-contacts
+    &__title
+      font-size: 18px
+      line-height: 22px
+    &__item
+      padding: 20px
+      font-size: 16px
+      line-height: 25px
+      min-height: 150px
+    &__info
+      max-width: 210px
+    &__name
+      margin-bottom: 10px
+    &__icons
+      right: 15px
+      img
+        width: 45px
+        height: 45px
+        margin-right: 10px
+
+  .result
+    &__desc
+      font-size: 15px
+      line-height: 22px
+    &__elem
+      &-datepicker
+        margin-bottom: 25px
+      &-item
+        padding: 20px
+        min-height: 200px
+        margin-bottom: 20px
+      &-icon
+        height: 45px
+      &-name
+        font-size: 15px
+        line-height: 19px
+      &-value
+        font-size: 30px
+        line-height: 30px
+        img
+          margin-top: 2px
+          width: 17px
+      &-desc
+        font-size: 17px
+        line-height: 20px
+        margin-bottom: 22px
+
+  .news-main
+    padding-top: 50px
+    padding-bottom: 60px
+    &__title
+      margin-bottom: 25px
+    &__list
+      margin-left: 0
+      margin-right: 0
+      margin-bottom: 0
+    &__item
+      width: 100%
+      margin-left: 0
+      margin-right: 0
+      margin-bottom: 30px
+      &:last-of-type
+        margin-bottom: 0
+      .n-item
+        &__img
+          height: 150px
+        &__name
+          font-size: 17px
+          line-height: 21px
+
+  .news
+    &__datepicker
+      margin-bottom: 40px
+    &__list
+      margin-bottom: -35px
+    &__item
+      margin-bottom: 35px
+      .n-item
+        &__img
+          height: 100px
+
+  .news-item
+    &__img
+      height: 180px
+      margin-bottom: 25px
+    &__date
+      font-size: 16px
+      padding-left: 28px
+      &:before
+        width: 18px
+        height: 19px
+    &__text
+      margin-top: 20px
+      h3
+        font-size: 20px
+        line-height: 27px
+      p
+        font-size: 14px
+        line-height: 23px
+        margin-bottom: 17px
+      i
+        margin-top: 20px
+        margin-bottom: 20px
+    &__tags
+      margin-bottom: 40px
+
+  .n-item
+    &.--lg
+      .n-item
+        &__img
+          height: 200px
+          margin-bottom: 15px
+        &__date
+          padding-left: 28px
+          margin-bottom: 10px
+          &:before
+            width: 17px
+            height: 18px
+        &__name
+          line-height: 21px
+    &__date
+      font-size: 15px
+      padding-left: 28px
+      margin-left: 2px
+      &:before
+        width: 16px
+        height: 17px
+    &__name
+      font-size: 14px
+      line-height: 19px
+
+  .price
+    margin-bottom: 0
+    padding-top: 25px
+    padding-bottom: 70px
+    &__inner
+      top: 0
+      left: 0
+      opacity: 1
+      z-index: 1
+      visibility: visible
+      position: relative
+      margin-bottom: 20px
+    &__scheme
+      display: none
+    &__info
+      min-width: 100%
+      box-shadow: none
+      padding: 0
+    &__area
+      position: relative
+      clip-path: none !important
+      left: 0 !important
+      bottom: 0 !important
+      margin-left: 0
+      margin-bottom: 20px
+      &:last-of-type
+        margin-bottom: 0
+      .price
+        &__info
+          display: block
+    &__name
+      padding: 0
+    &__link
+      padding: 8px 0
+      &:hover
+        background: transparent
+    &__map
+      display: none
+
+  .price-item
+    &__info
+      flex-direction: column
+    &__desc
+      order: 1
+      padding-left: 0
+      width: 100%
+      font-size: 15px
+      line-height: 21px
+      margin-bottom: 30px
+      p
+        margin-bottom: 16px
+    &__btn
+      order: 2
+      font-size: 18px
+
+  .p-table
+    table
+      display: block
+      width: 100%
+      overflow-x: auto
+      scrollbar-width: thin
+      scrollbar-color: #C3C3C4 #fff
+      &::-webkit-scrollbar
+        height: 5px
+      &::-webkit-scrollbar-thumb
+        background: #C3C3C4
+        border-radius: 10px
+
+    thead
+      td
+        padding: 10px
+        line-height: 18px
+    tbody
+      td
+        font-size: 12px
+        min-width: 130px
+
+  .contacts
+    &__wrap
+      margin-bottom: 20px
+    &__info
+      padding: 25px
+      &-item
+        margin-bottom: 20px
+      &-icon
+        &.--mail
+          margin-top: 3px
+      &-text
+        font-size: 15px
+        padding-left: 16px
+    &__map
+      width: 380px
+    &__main
+      margin-left: 0
+      margin-right: 0
+      margin-bottom: 0
+      &-item
+        width: 100%
+        min-height: 90px
+        margin-left: 0
+        margin-right: 0
+        margin-bottom: 10px
+        &:last-of-type
+          margin-bottom: 0
+
+  .popup
+    padding: 40px 30px
+    &__btn
+      font-size: 18px
+
+@media screen and (max-width: 410px)
+  .pagination
+    &__arrow
+      min-width: 26px
+      min-height: 31px
+      svg
+        width: 5px
+    &__link
+      font-size: 13px
+      min-width: 32px
+      padding: 7px 4px
+
+  .datepicker
+    &__input
+      width: 100%
+      margin-bottom: 10px
+      &:last-of-type
+        margin-bottom: 0
+    &__btn
+      &.--w2
+        max-width: 100%
+        margin-top: 12px
+        margin-left: 0
+
+  .intro
+    padding-bottom: 0
+    &__preview
+      margin-top: -15px
+      transform: scale(.8)
+      right: -40px
+      bottom: -32px
+
+  .offices
+    &__item
+      width: 100%
+
+  .news-main
+    &__item
+      .n-item
+        &__name
+          font-size: 14px
+          line-height: 19px
+
+  .news
+    &__list
+      margin-left: 0
+      margin-right: 0
+    &__item
+      width: 100%
+      margin-left: 0
+      margin-right: 0
+      &.--w2
+        margin-right: 0
+      .n-item
+        &__img
+          height: 150px
+
+  .n-item
+    &.--lg
+      .n-item
+        &__img
+          height: 150px
+        &__date
+          font-size: 14px
+          margin-bottom: 7px
+        &__name
+          font-size: 14px
+          line-height: 19px
+    &__date
+      font-size: 14px
+      margin-bottom: 7px
+
+  .sitemap
+    &__title
+      margin-bottom: 30px
+    &__wrap
+      justify-content: space-between
+    &__list
+      width: calc( 100% / 2 - 30px)
+    &__link
+      font-size: 17px
+      line-height: 21px
+
+  .h1
+    font-size: 45px
+    line-height: 50px
+
+  .h2
+    font-size: 27px
+    line-height: 35px
+
+  .h3
+    font-size: 25px
+    line-height: 30px
+
+  .nav
+    ul
+      li
+        &:hover
+          &:before, &:after
+            display: none
+          a
+            color: $yellow
+
+  .breadcrumbs
+    margin-bottom: 25px
+
+  .page-padding
+    padding-bottom: 100px
+
+  .pagination
+    justify-content: center
+    &__link
+      min-width: 45px
+
+  .datepicker
+    &__input
+      width: 212px
+
+  .sidepage
+    &__title
+      margin-bottom: 30px
+
+  .act
+    &__text
+      blockquote
+        padding-left: 25px
+        &:before
+          width: 5px
+
+  .team
+    &__dir
+      flex-direction: column
+      margin-bottom: 50px
+      &-img
+        width: auto
+      &-info
+        width: 100%
+        padding-left: 0
+        margin-top: 25px
+      &-duty
+        margin-bottom: 20px
+      &-text
+        font-size: 15px
+    &__staff
+      margin-bottom: -40px
+      &-item
+        width: calc( 100% / 2 - 20px)
+        margin-bottom: 40px
+      &-img
+        height: 310px
+        margin-bottom: 15px
+      &-name
+        min-height: 50px
+
+  .corr
+    &__list
+      margin-left: 0
+      margin-right: 0
+    &__item
+      width: 100%
+      max-width: 380px
+      margin-left: auto
+      margin-right: auto
+      &-text
+        font-size: 15px
+      &-detail
+        font-size: 16px
+      &-icon
+        margin-right: 0
+
+  .docs-main
+    &__item
+      padding: 18px 0
+    &__icon
+      width: 32px
+    &__name
+      width: calc( 100% - 32px - 86px )
+      font-size: 16px
+      br
+        display: none
+    &__actions
+      max-width: 86px
+    &__download
+      width: 20px
+
+  .price
+    &__map
+      margin-top: -380px
+      margin-left: -20px
+    &__area
+      margin-left: -20px
+    &__inner
+      left: auto
+      right: 10px
+      top: 80px
+    &__info
+      min-width: 265px
+    &__name
+      font-size: 17px
+      margin-bottom: 10px
+      padding: 0 20px
+    &__link
+      padding: 7px 20px
+
+  .price-item
+    &__info
+      margin-bottom: 40px
+    &__desc
+      font-size: 16px
+      padding-left: 30px
+
+  .p-table
+    thead
+      td
+        font-size: 14px
+        line-height: 20px
+    tbody
+      td
+        font-size: 14px
+        line-height: 20px
+
+  .rules
+    &__elems
+      margin-bottom: 20px
+    &__video
+      padding: 35px
+      margin-bottom: 50px
+      &-title
+        margin-bottom: 20px
+    &__ps
+      padding: 35px
+      margin-bottom: 50px
+    &__docs
+      margin-bottom: 50px
+
+  .r-docs
+    &__title
+      font-size: 20px
+      line-height: 24px
+      margin-bottom: 25px
+
+  .r-text
+    p
+      margin-bottom: 10px
+
+  .r-contacts
+    &__title
+      font-size: 20px
+      line-height: 24px
+      margin-bottom: 25px
+    &__item
+      font-size: 17px
+      line-height: 27px
+      padding: 25px
+      min-height: 170px
+
+  .result
+    &__elem
+      &-list
+        margin-left: 0
+        margin-right: 0
+        margin-bottom: 0
+      &-item
+        width: 100%
+        min-height: 230px
+        margin-left: 0
+        margin-right: 0
+        padding: 30px
+        justify-content: center
+        &:last-of-type
+          margin-bottom: 0
+      &-total
+        margin-left: 6px
+
+  .news-main
+    &__list
+      margin-left: -10px
+      margin-right: -10px
+      margin-bottom: -20px
+    &__item
+      width: calc( 100% / 2 - 20px )
+      margin-left: 10px
+      margin-right: 10px
+      margin-bottom: 20px
+      .n-item
+        &__img
+          height: 125px
+
+  .news
+    &__list
+      margin-right: -10px
+      margin-left: -10px
+    &__item
+      width: calc( 100% / 2 - 20px )
+      margin-right: 10px
+      margin-left: 10px
+      &.--w2
+        max-width: 100%
+        margin-right: 10px
+
+  .news-item
+    &__btn
+      margin-top: 0
+    &__img
+      height: 220px
+      margin-bottom: 35px
+    &__text
+      h3
+        font-size: 25px
+        line-height: 30px
+        margin-bottom: 20px
+    &__actions
+      padding: 20px
+
+  .n-item
+    &.--lg
+      .n-item
+        &__img
+          margin-bottom: 20px
+        &__name
+          font-size: 17px
+          line-height: 24px
+    &__img
+      margin-bottom: 15px
+    &__date
+      margin-bottom: 10px
+    &__name
+      font-size: 15px
+
+  .contacts
+    &__info
+      padding: 30px 50px 30px 20px
+      &-item
+        margin-bottom: 25px
+      &-text
+        font-size: 16px
+        line-height: 23px
+    &__map
+      width: 550px
+      height: 300px
+    &__main
+      &-item
+        min-height: 100px
+        padding: 20px
+      &-info
+        padding-left: 13px
+      &-tel
+        font-size: 18px
+        line-height: 23px
+
+  .popup
+    max-width: 490px
+    padding: 20px
+    .carousel__button
+      right: 15px !important
+    &__title
+      margin-bottom: 25px
+    &__btn
+      max-width: 100%
+      font-size: 17px

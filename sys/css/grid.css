@@ -1,0 +1,46 @@
+.case {
+  position: relative;
+  width: 1316px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto;
+}
+.case .case {
+  padding-left: 0;
+  padding-right: 0;
+}
+@media screen and (max-width: 1340px) {
+  .case {
+    width: 1200px;
+  }
+}
+@media screen and (max-width: 1220px) {
+  .case {
+    width: 960px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .case {
+    width: 730px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .case {
+    width: 560px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .case {
+    width: 390px;
+  }
+}
+@media screen and (max-width: 410px) {
+  .case {
+    width: 100%;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
